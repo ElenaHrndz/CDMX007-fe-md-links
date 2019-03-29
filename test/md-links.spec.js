@@ -1,3 +1,5 @@
+const functions = require('../functions.js');
+
 const mdLinks = require('../');
 
 
