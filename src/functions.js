@@ -30,7 +30,7 @@ let readFile = function (mdToRead){
     {
       //console.log(data.toString());
       const convertToString = data.toString();
-      const regTxt = /([^[]*])/g;
+      const regTxt = /(?:[^[])([^[]*)(?=\]+\()/g;
       const txt = convertToString.match(regTxt);
       const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)/g;
       const foundUrl = convertToString.match(reg);
