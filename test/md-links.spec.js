@@ -1,10 +1,19 @@
-const mdLinks = require('../');
+const readFile = require('../src/functions.js');
+
+describe('readFile', () => {
+  it('should be an object', () => {
+    expect(typeof readFile).toBe('object');
+  });
+});
 
 
-describe('mdLinks', () => {
+const hasMD = require('../src/functions.js');
 
-  it('should...', () => {
-    console.log('FIX ME!');
+describe('hasMD', () => {
+
+  it('should be an object', () => {
+    expect(typeof hasMD).toBe('object');
+    // console.log('FIX ME!');
   });
 
 });
