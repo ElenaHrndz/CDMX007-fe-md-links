@@ -32,7 +32,7 @@ let readFile = function (mdToRead,callback){
         const convertToString = data.toString();
         const regTxt = /(?:[^[])([^[]*)(?=(\]+\(((https?:\/\/)|(http?:\/\/)|(www\.))))/g;
         const txt = convertToString.match(regTxt);
-        const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)/g;
+        const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)(?=\))/g;
         const urlArray = convertToString.match(reg);
         if(urlArray != null){
           // console.log(txt)

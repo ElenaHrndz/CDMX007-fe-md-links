@@ -31,7 +31,7 @@ let readFile = function (mdToRead){
       const convertToString = data.toString();
       const regTxt = /(?:[^[])([^[]*)(?=(\]+\(((https?:\/\/)|(http?:\/\/)|(www\.))))/g;
       const txt = convertToString.match(regTxt);
-      const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)/g;
+      const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)(?=\))/g;
       let url = convertToString.match(reg);
       const urlTotal = url.length;
       let uniqueUrl;
