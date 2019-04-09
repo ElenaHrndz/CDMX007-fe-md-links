@@ -49,9 +49,9 @@ let validate = function (urlArray, txt) {
       .then(response => {
         if (response.status == 200) {
           //console.log("This are the ok links");
-          console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`)
+          console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.cyan)
         } else if (response.status == 404|400) {
-          console.log(`ERROR\nText: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`)
+          console.log(`ERROR.\nText: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.red)
         }
       }
     );

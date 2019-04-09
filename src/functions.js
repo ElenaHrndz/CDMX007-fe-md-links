@@ -33,7 +33,7 @@ let readFile = function(mdToRead) {
       const txt = convertToString.match(regTxt);
       const reg = /((https?:\/\/|http?:\/\/|www\.)[^\)]+)/g;
       const urlArray = convertToString.match(reg);
-      console.log("This are the found links");
+      console.log("This are the found links".cyan);
       if (urlArray != null) {
         for (let i = 0; i < urlArray.length; i++) {
           console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}`);
