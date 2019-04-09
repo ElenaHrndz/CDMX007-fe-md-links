@@ -43,11 +43,6 @@ let readFile = function (mdToRead){
         uniqueUrl = url.filter((v, i, a) => a.indexOf(v) === i);
         console.log('Total unique links' +" " + uniqueUrl.length + "\n");
       }
-      else
-      {
-
-      }
-
      }
     //console.log(data);
  });
