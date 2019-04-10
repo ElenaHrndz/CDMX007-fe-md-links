@@ -37,21 +37,21 @@ let readFile = function (mdToRead,callback){
         if(urlArray != null){
           // console.log(txt)
         }
-        callback(urlArray, txt);
+        callback(urlArray, txt, mdToRead);
       }
   });
   return _returnerUrl;
 }
 
-let validate = function (urlArray, txt) {
+let validate = function (urlArray, txt, mdToRead) {
   for(let i =0; i < urlArray.length; i++){
     fetch(urlArray[i])
       .then(response => {
         if (response.status == 200) {
           //console.log("This are the ok links");
-          console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.cyan)
+          console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nFile: ${mdToRead}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.cyan)
         } else if (response.status == 404|400) {
-          console.log(`ERROR.\nText: ${txt[i]}\nLink: ${urlArray[i]}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.red)
+          console.log(`ERROR.\nText: ${txt[i]}\nLink: ${urlArray[i]}\nFile: ${mdToRead}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.red)
         }
       }
     );
