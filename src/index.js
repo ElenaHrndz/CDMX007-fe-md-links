@@ -29,7 +29,6 @@ const validateLink = (fileName) => {
   });
 }
 
-
 const getStats = () => {
   stats.hasMD('./', function(array) {
     array.forEach(fileName => {
@@ -39,12 +38,15 @@ const getStats = () => {
 }
 
 const getStatsValidate = () => {
-  validateStats.hasMD('./', function(array) {
-    array.forEach(fileName => {
-      validateStats.readFile(fileName, true);
+validateStats.hasMD('./', function(array) {
+  array.forEach(fileName => {
+    validateStats.readFile(fileName, function(uniqueUrl){
+      validateStats.validStats(uniqueUrl);
     });
   });
+});
 }
+
 
 module.exports.validateLink = validateLink;
 module.exports.validateLinks = validateLinks;
