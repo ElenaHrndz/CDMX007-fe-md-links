@@ -2,7 +2,7 @@ const fs = require('fs');
 var path = require('path');
 const fetch = require('node-fetch');
 
-let hasMD = function(startPath, callback){
+let hasMD = function(startPath, callback) {
   //We generate an array
   let mdArray = [];
   //generate a return value
@@ -12,7 +12,7 @@ let hasMD = function(startPath, callback){
   _returner = fs.readdir(startPath, (err, files) => {
     files.forEach(file => {
       //if some extencion name of the file has md we added to the array to return
-      if(path.extname(file) == '.md'){
+      if (path.extname(file) == '.md') {
         mdArray.push(file);
       }
     });
@@ -22,40 +22,27 @@ let hasMD = function(startPath, callback){
   return _returner;
 }
 
-let readFile = function (mdToRead){
+let readFile = function(mdToRead) {
   fs.readFile(mdToRead, 'utf8', function(err, data) {
     if (err) {
-    return console.log(err);
-    }
-    {
+      return console.log(err);
+    } {
       //console.log(data.toString());
       const convertToString = data.toString();
-      const regTxt = /(?:[^[])([^[]*)(?=\]+\()/g;
+      const regTxt = /(?:[^[])([^[]*)(?=(\]+\(((https?:\/\/)|(http?:\/\/)|(www\.))))/g;
       const txt = convertToString.match(regTxt);
-      const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)/g;
-      const foundUrl = convertToString.match(reg);
-      if(foundUrl != null){
-        console.log(txt)
-        console.log("This are the found links".cyan);
-        console.log(foundUrl);
+      const reg = /(((https?:\/\/)|(http?:\/\/)|(www\.))[^\s\n)]+)(?=\))/g;
+      const urlArray = convertToString.match(reg);
+      console.log(`This links are founded in ${mdToRead}\n`.cyan);
+      if (urlArray != null) {
+        for (let i = 0; i < urlArray.length; i++) {
+          console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nFile: ${mdToRead}\n`);
+        }
       }
-     }
+    }
     //console.log(data);
- });
+  });
 }
-
-// exports.stat = function (){
-//  fs.stat('contenido.md', function(err, stat) {
-//     if(err == null) {
-//      console.log('File exists');
-//     } else if(err.code == 'ENOENT') {
-//      // file does not exist
-//      fs.writeFile('log.txt', 'Some log\n');
-//     } else {
-//      console.log('Some other error: ', err.code);
-//     }
-//  });
-// }
 
 module.exports.hasMD = hasMD;
 module.exports.readFile = readFile;

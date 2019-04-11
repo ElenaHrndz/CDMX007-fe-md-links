@@ -21,7 +21,7 @@ let hasMD = function(startPath, callback){
   return _returner;
 }
 
-let readFile = function (mdToRead){
+let readFile = function (mdToRead, {needMoreInfo} = false){
   fs.readFile(mdToRead, 'utf8', function(err, data) {
     if (err) {
     return console.log(err);
@@ -39,14 +39,33 @@ let readFile = function (mdToRead){
         //console.log(txt)
        // console.log("This are the found links".cyan);
         //console.log(urlTotal);
-        console.log('Total links' +" " + url.length);
+        console.log(`Total links ${url.length}\n`);
         uniqueUrl = url.filter((v, i, a) => a.indexOf(v) === i);
-        console.log('Total unique links' +" " + uniqueUrl.length + "\n");
+        console.log(`Total unique links ${uniqueUrl.length}\n`);
+        if(needMoreInfo){
+          validate(uniqueUrl);
+        }
       }
      }
     //console.log(data);
  });
 }
+
+let validate = function (uniqueUrl) {
+  let badLinks = 0;
+  for(let i =0; i < uniqueUrl.length; i++){
+    fetch(uniqueUrl[i])
+      .then(response => {
+        if (response.status == 404|400) {
+          badLinks++;
+        }
+        if(i === uniqueUrl.length-1){
+          console.log(`Total Functional Links: ${uniqueUrl.length-badLinks}\nTotal Broken links: ${badLinks}\n`)
+        }
+      }
+    );
+    }
+  }
 
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
