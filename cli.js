@@ -12,9 +12,9 @@ const {
 program
   .version('0.1.0')
 
-program.on('command:*', function(){
-  printLinks();
-});
+// program.on('command:*', function(){
+//   printLinks();
+// });
 
 program
   .command('get-links')

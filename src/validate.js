@@ -50,7 +50,7 @@ let validate = function (urlArray, txt, mdToRead) {
         if (response.status == 200) {
           //console.log("This are the ok links");
           console.log(`Text: ${txt[i]}\nLink: ${urlArray[i]}\nFile: ${mdToRead}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.cyan)
-        } else if (response.status == 404|400) {
+        } else if (response.status == 404||response.status == 400) {
           console.log(`ERROR.\nText: ${txt[i]}\nLink: ${urlArray[i]}\nFile: ${mdToRead}\nResponse code: ${response.status}\nResponse: ${response.statusText}\n`.red)
         }
       }
