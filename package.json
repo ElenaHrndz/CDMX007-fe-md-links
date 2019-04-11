@@ -1,7 +1,7 @@
 {
-  "name": "md-links",
-  "version": "1.0.0",
-  "description": "",
+  "name": "mdlinks-finder",
+  "version": "1.0.1",
+  "description": "The mdlinks-finder tool allows you to review the links within an MD file to know the details of them, the status and the quantity of them.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ElenaHrndz/CDMX007-fe-md-links"
   },
   "author": "María Elena Hernández Payán",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/ElenaHrndz/CDMX007-fe-md-links/issues"
   },
