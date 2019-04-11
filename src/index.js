@@ -3,7 +3,6 @@ const colors = require('colors');
 const functions = require('./functions.js');
 const validate = require('./validate.js');
 const stats = require('./stats.js');
-const validateStats = require('./validateStats.js')
 
 const printLinks = () => {
   functions.hasMD('./', function(array) {
@@ -14,7 +13,7 @@ const printLinks = () => {
 }
 
 const validateLinks = () => {
-  validate.hasMD('./', function(array) {
+  functions.hasMD('./', function(array) {
     array.forEach(fileName => {
       validate.readFile(fileName, function(urls, txt, file) {
         validate.validate(urls, txt, file);
@@ -24,14 +23,13 @@ const validateLinks = () => {
 }
 
 const validateLink = (fileName) => {
-  validate.readFile(fileName, function(urls, txt, file) {
+  functions.readFile(fileName, function(urls, txt, file) {
     validate.validate(urls, txt, file);
   });
 }
 
-
 const getStats = () => {
-  stats.hasMD('./', function(array) {
+  functions.hasMD('./', function(array) {
     array.forEach(fileName => {
       stats.readFile(fileName);
     });
@@ -39,12 +37,13 @@ const getStats = () => {
 }
 
 const getStatsValidate = () => {
-  validateStats.hasMD('./', function(array) {
+  functions.hasMD('./', function(array) {
     array.forEach(fileName => {
-      validateStats.readFile(fileName, true);
+      stats.readFile(fileName, true);
     });
   });
 }
+
 
 module.exports.validateLink = validateLink;
 module.exports.validateLinks = validateLinks;
