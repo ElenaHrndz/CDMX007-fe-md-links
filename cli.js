@@ -10,11 +10,7 @@ const {
 } = require ('./src/index.js');
 
 program
-  .version('0.1.0')
-
-// program.on('command:*', function(){
-//   printLinks();
-// });
+  .version('1.0.0')
 
 program
   .command('get-links')
