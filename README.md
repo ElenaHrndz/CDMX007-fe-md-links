@@ -6,8 +6,12 @@ La herramienta mdlinks permite revisar los links dentro de un archivo .md para c
 
 ### Uso
 Abre la terminal o shell de tu computadora. Ingresa al repositorio donde deseas correr la librería.
-Instala la librería usando kfnifdh
-Para ejecutar ingresa en la consola el comando (para conocer los links dentro del los archivos .md que encuentre en esa ubicación) ```sh mdlinks get-links  o mdlinks gl ```
+Instala la librería usando ```npm i mdlinks-finder```
+Para ejecutar ingresa en la consola el comando (para conocer los links dentro del los archivos .md que encuentre en esa ubicación)
+```sh
+mdlinks get-links o
+mdlinks gl
+```
 
 #### Opciones
 
