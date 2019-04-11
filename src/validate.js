@@ -2,25 +2,6 @@ const fs = require('fs');
 var path = require('path');
 const fetch = require('node-fetch');
 
-let hasMD = function(startPath, callback){
-  //We generate an array
-  let mdArray = [];
-  //generate a return value
-  let _returner;
-  //We create an  asyncronus return value
-  //read all the files in an specific directory
-  _returner = fs.readdir(startPath, (err, files) => {
-    files.forEach(file => {
-      //if some extencion name of the file has md we added to the array to return
-      if(path.extname(file) == '.md'){
-        mdArray.push(file);
-      }
-    });
-    callback(mdArray);
-  });
-  return _returner;
-}
-
 let readFile = function (mdToRead,callback){
   // let urlArray = [];
   let _returnerUrl;
@@ -58,6 +39,5 @@ let validate = function (urlArray, txt, mdToRead) {
     }
   }
 
-module.exports.hasMD = hasMD;
 module.exports.readFile = readFile;
 module.exports.validate = validate;
